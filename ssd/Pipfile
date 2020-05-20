@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+
+[packages]
+tensorflow = "==1.14.0"
+opencv-python = "*"
+matplotlib = "*"
+pillow = "*"
+django = "==2.2"
+
+[requires]
+python_version = "3.7"
