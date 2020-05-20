@@ -15,9 +15,27 @@ DETECTION_INPUT_DIR = os.path.join(media, "images/detection")
 DETECTION_RESULT_DIR = os.path.join(media, "images/detection_result")
 
 def get_value(name):
+    """
+    Image.objectsの値を取得するための関数.
+
+    Args:
+        name: str
+
+    Returns:
+        list
+    """
     return Image.objects.all().values_list(name, flat=True)
 
 def get_result_url(urls):
+    """
+    推論結果画像の保存場所を取得するための関数.
+
+    Args:
+        urls: list
+
+    Returns:
+        list
+    """
     url_lists = []
     for url in urls:
         url_list = url.split("/")
@@ -27,6 +45,9 @@ def get_result_url(urls):
     return url_lists
     
 class TopView(View):
+    """
+    トップページのビューを作成するクラス.
+    """
     def get(self, request, *args, **kwargs):
         image_names = get_value("title")
         output_image = get_result_url(get_value("picture"))
@@ -41,6 +62,9 @@ class TopView(View):
         return render(request, "detection/index.html", context)
 
     def post(self, request, *args, **kwargs):
+        """
+        推論用画像のアップデートと推論の実施.
+        """
         form = ImageForms(request.POST, request.FILES)
         if not form.is_valid():
             return render(request, "detection/index.html", {"form": form})
@@ -48,6 +72,7 @@ class TopView(View):
         img = form.save(commit=False)
         img.save()
 
+        # inference関数でSSDの推論が実施される.
         ids = get_value("id")
         inference(Image.objects.get(id=max(ids)).title)
         
@@ -56,6 +81,9 @@ class TopView(View):
 index = TopView.as_view()
 
 class Delete_all(View):
+    """
+    アップロードした画像および推論を実施した画像のすべてを削除するクラス.
+    """
     def get(self, request, *args, **kwargs):
         image = Image.objects.all()
         
@@ -73,6 +101,9 @@ class Delete_all(View):
 delete_all = Delete_all.as_view()
 
 class Delete_part(View):
+    """
+    個々の画像を削除するクラス.
+    """
     def get(self, request, delete_id, *args, **kwargs):
         image = Image.objects.get(id=delete_id)
         os.remove(os.path.join(media, image.picture_path))
