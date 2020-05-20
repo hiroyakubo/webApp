@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN";
+  }
+
+h1 {
+  text-align: center; 
+  font-size: 100px;
+  color: white;
+  background-color: #00FFFF;
+  padding: 200px;
+  margin: 0%;
+}
+
+.info {
+  padding: 50px 30px;
+  margin: 40px 150px;
+  font-weight: bold;
+  color: #6091d3;/*文字色*/
+  background: #FFF;
+  border: solid 3px #6091d3;/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
+
+.info p {
+  margin: 0; 
+  padding: 0;
+}
+
+
+input.inference {
+  font-size: 15px;
+
+  /* 文字の太さをboldに指定 */
+  font-weight: bold;
+
+  /* 縦方向に10px、
+   * 横方向に30pxの余白を指定 */
+  padding: 5px 10px;
+
+  /* 文字色を白色に指定 */
+  color: #fff;
+
+  /* ボーダーをなくす */
+  border-style: none;
+
+  /* ボタンの影の指定
+   * 影の横幅を2px
+   * 縦長を2px
+   * ぼかしを3px
+   * 広がりを1px
+   * 色を#666（グレー）に指定 */
+  box-shadow: 2px 2px 3px 1px #666;
+  -moz-box-shadow: 2px 2px 3px 1px #666;
+  -webkit-box-shadow: 2px 2px 3px 1px #666;
+
+  /* テキストの影の指定
+   * 影の横幅を1px
+   * 縦長を1px
+   * ぼかしを2px
+   * 色を#000（黒）に指定 */
+  text-shadow: 1px 1px 2px #000;
+
+  /* グラデーションの指定 */
+  background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+  background: -webkit-gradient(linear, left bottom, left top, from(#36d), color-stop(0.5, #248), to(#36d));
+
+  /* 角丸の指定 */
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+input.inference:hover {
+  /* 透明度を20%に指定 */
+  opacity: 0.8;
+}
+
+button.delete-all {
+  font-size: 15px;
+
+  /* 文字の太さをboldに指定 */
+  font-weight: bold;
+
+  /* 縦方向に10px、
+   * 横方向に30pxの余白を指定 */
+  padding: 5px 10px;
+
+  /* 文字色を白色に指定 */
+  color: #fff;
+
+  /* ボーダーをなくす */
+  border-style: none;
+
+  /* ボタンの影の指定
+   * 影の横幅を2px
+   * 縦長を2px
+   * ぼかしを3px
+   * 広がりを1px
+   * 色を#666（グレー）に指定 */
+  box-shadow: 2px 2px 3px 1px #666;
+  -moz-box-shadow: 2px 2px 3px 1px #666;
+  -webkit-box-shadow: 2px 2px 3px 1px #666;
+
+  /* テキストの影の指定
+   * 影の横幅を1px
+   * 縦長を1px
+   * ぼかしを2px
+   * 色を#000（黒）に指定 */
+  text-shadow: 1px 1px 2px #000;
+
+  /* グラデーションの指定 */
+  background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+  background: -webkit-gradient(linear, left bottom, left top, from(#36d), color-stop(0.5, #248), to(#36d));
+
+  /* 角丸の指定 */
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+button.delete-all:hover {
+  /* 透明度を20%に指定 */
+  opacity: 0.8;
+}
+
+.delete-button {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 18pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #000066;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #000066;    /* 枠の指定 */
+}
+
+.delete-button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #000066;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
+
+.prelist {
+  font-size: 50px;
+  margin-top: 200px;
+}
+
+.postlist {
+  font-size: 50px;
+  margin-top: 150px;
+}
+
+.display-preinfer {
+  font-size: 30px;
+}
+
+.display-postinfer {
+  font-size: 30px;
+}

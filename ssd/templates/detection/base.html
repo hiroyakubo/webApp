@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>detection app</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'detection/style.css' %}">
+    <link rel="icon" href="{% static 'image/favicon.ico' %}">
+  </head>
+  <body>
+    <h1>SSD object detection</h1>
+    <div class="content container">
+        <div class="upload form">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+  </body>
+</html>

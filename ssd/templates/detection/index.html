@@ -1,0 +1,43 @@
+{% extends "detection/base.html" %}
+
+{% block title %} upload form {% endblock %}
+
+{% block content %}
+<div class="info">
+    <p>SSDを用いた物体検出を行う画像を選択して下さい。</p>
+    <p>選択後、推論ボタンを押すことで物体検出が行われます。</p><br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <br>
+        <input class="inference" type="submit" value="推論">
+        <button class="delete-all" onclick="location.href='delete_all'">全てを削除</button>
+    </form>
+</div>
+
+<div class="preinference">
+    <div class="prelist">
+        <p>推論前画像一覧</p>
+    </div>
+    
+    <div class="display-preinfer">
+        {% for i in input_image %}
+            <p>画像タイトル : {{ i.name }}</p>
+            <img src={{ i.image }}>
+            <a href="{% url 'delete_part' i.id %}" class="delete-button">この画像を削除</a><br>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="postinference">
+    <div class="postlist">
+        <p>推論後画像一覧</p>
+    </div>
+    <div class="display-postinfer">
+        {% for i in output_image %}
+            <p>画像タイトル : {{ i.name }}</p>
+            <img src={{ i.image }}>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
