@@ -2,8 +2,7 @@
 
 ## 推論方法
 詳細な紹介はblogに記載<br>
-→blogはこちら
-
+→blogは[こちら](https://www.deeplearning-blog.net/post/django-ssd-tensorflow)
 ### 推論方法
 1. ckptファイルを解凍する<br>
     ```bash

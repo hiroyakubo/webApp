@@ -44,14 +44,16 @@ def get_result_url(urls):
     
     return url_lists
     
-class TopView(View):
+class Top_view(View):
     """
     トップページのビューを作成するクラス.
     """
     def get(self, request, *args, **kwargs):
+        # トップページに表示する画像のパスを取得
         image_names = get_value("title")
         output_image = get_result_url(get_value("picture"))
         
+        # html側で使いやすいように[{}]の形にしておく
         inputs = [{"image" : os.path.join(media, i), "name": n, "id": d} for i, n, d in zip(get_value("picture"), image_names, get_value("id"))]
         outputs = [{"image": i, "name": n} for i, n in zip(output_image, image_names)]
         context = {
@@ -78,22 +80,23 @@ class TopView(View):
         
         return redirect(reverse("index"))
 
-index = TopView.as_view()
+index = Top_view.as_view()
 
 class Delete_all(View):
     """
-    アップロードした画像および推論を実施した画像のすべてを削除するクラス.
+    アップロードした画像および推論を実施した全ての画像を削除するクラス.
     """
     def get(self, request, *args, **kwargs):
-        image = Image.objects.all()
-        
+        # アップロードされた画像および推論画像へのパスを取得.
         input_images = glob.glob(os.path.join(DETECTION_INPUT_DIR, "*"))
         result_images = glob.glob(os.path.join(DETECTION_RESULT_DIR, "*"))
 
+        # 画像の削除.
         for i, r in zip(input_images, result_images):
             os.remove(i)
             os.remove(r)
-
+        
+        image = Image.objects.all()
         image.delete()
         
         return redirect(reverse("index"))
@@ -105,6 +108,7 @@ class Delete_part(View):
     個々の画像を削除するクラス.
     """
     def get(self, request, delete_id, *args, **kwargs):
+        # 削除ボタンが押された画像を削除する.
         image = Image.objects.get(id=delete_id)
         os.remove(os.path.join(media, image.picture_path))
         os.remove(get_result_url(get_value("picture"))[0])
